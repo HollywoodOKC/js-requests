@@ -73,13 +73,13 @@ sayHelloButton.addEventListener('click', sayHello);
 */
 
 const ohMy = () => {
-    return axios.get('http://localhost:3000/animals').then(res => {
-            console.log(res.data);
-            return res.data;
-        })
-}
+    return axios.get('http://localhost:3000/animals')
+        .then(res => {
+        return res.data
+    })
+};
 
-document.getElementById('animals-button').addEventListener('click', ohMy)
+document.getElementById('animals-button').addEventListener('click', ohMy);
 
 
 // PROBLEM 6
@@ -96,7 +96,8 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-
+    return axios.get('http://localhost:3000/repeat/I-Love-to-code').then(res => res.data
+    )
 }
 
 // PROBLEM 7
@@ -108,7 +109,9 @@ const repeatMyParam = () => {
     After setting the textContent, use the style method to change display to 'block'
 */
 
-// Code in the repeatMyParam function above
+let repeat = document.getElementById('repeat-text');
+repeat.style.disply = 'block';
+repeat.textContent = res.data;
 
 
 
