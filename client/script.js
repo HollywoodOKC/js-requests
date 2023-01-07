@@ -75,8 +75,8 @@ sayHelloButton.addEventListener('click', sayHello);
 const ohMy = () => {
     return axios.get('http://localhost:3000/animals')
         .then(res => {
-        return res.data
-    })
+            console.log(res.data);
+        })
 };
 
 document.getElementById('animals-button').addEventListener('click', ohMy);
@@ -96,9 +96,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy);
 */
 
 const repeatMyParam = () => {
-    return axios.get('http://localhost:3000/repeat/I-Love-to-code').then(res => res.data
+    axios.get('http://localhost:3000/repeat/I-Love-to-code').then((res) => {
+        let text = document.getElementById('repeat-text');
+        text.style.display = 'block';
+        text.style.backgroundColor = 'orange';
+        text.textContent = res.data;
+    }
     )
 }
+const repeat = document.getElementById("repeat-button");
+repeat.addEventListener('click', repeatMyParam);
 
 // PROBLEM 7
 /*
@@ -109,9 +116,7 @@ const repeatMyParam = () => {
     After setting the textContent, use the style method to change display to 'block'
 */
 
-let repeat = document.getElementById('repeat-text');
-repeat.style.disply = 'block';
-repeat.textContent = res.data;
+//Lesson starts on above.
 
 
 
@@ -124,8 +129,17 @@ repeat.textContent = res.data;
     Outside of your new function, select the button with the id "query-button" and add a click event listener that calls your function.
 */
 
-// CODE HERE
+const query = () => {
+    axios.get('http://localhost:3000/query-test').then(res => {
+        const myQuery = document.getElementById('query');
+        myQuery.style.display = 'block';
+        myQuery.style.backgroundColor = 'blue';
+        myQuery.textContent = res.data;
+    })
+}
 
+const thisButton = document.getElementById('query-button');
+thisButton.addEventListener('click', query);
 
 
 ////////////////
