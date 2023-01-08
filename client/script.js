@@ -195,7 +195,15 @@ thisButton.addEventListener('click', query);
     Based on what we did earlier to display this type of data, write code that will display the response in your HTML document.
 */
 const createFood = () => {
-    axios.post('/food').then(res => {
-
+    axios.post('/food', {body}).then(res => {
+        const foodInput = document.getElementById('input').value;
+        let myFood = {
+            newFood: foodInput.res.data,
+        }
+        console.log(res.data);
+        const food = document.getElementById('food');
+        food.style.display = 'block';
+        food.display.backgroundColor = 'teal';
+        food.innerHTML = myFood(res.data);
     })
 }
