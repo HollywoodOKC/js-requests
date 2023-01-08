@@ -75,6 +75,10 @@ sayHelloButton.addEventListener('click', sayHello);
 const ohMy = () => {
     return axios.get('http://localhost:3000/animals')
         .then(res => {
+            const animals = document.getElementById('animals');
+            animals.style.display = 'block';
+            animals.style.backgroundColor = 'pink';
+            animals.innerHTML = res.data;
             console.log(res.data);
         })
 };
@@ -130,7 +134,7 @@ repeat.addEventListener('click', repeatMyParam);
 */
 
 const query = () => {
-    axios.get('http://localhost:3000/query-test').then(res => {
+    axios.get('http://localhost:3000/query-test/?name=Tyson').then(res => {
         const myQuery = document.getElementById('query');
         myQuery.style.display = 'block';
         myQuery.style.backgroundColor = 'blue';
