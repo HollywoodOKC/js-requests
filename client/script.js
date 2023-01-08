@@ -75,11 +75,11 @@ sayHelloButton.addEventListener('click', sayHello);
 const ohMy = () => {
     return axios.get('http://localhost:3000/animals')
         .then(res => {
-            const animals = document.getElementById('animals');
-            animals.style.display = 'block';
-            animals.style.backgroundColor = 'pink';
-            animals.innerHTML = res.data;
-            console.log(res.data);
+            for (let t = 0; t < res.data.length; t++) {
+                let newP = document.createElement('p');
+                newP.innerHTML = res.data[t];
+                document.body.appendChild(newP);
+            };
         })
 };
 
